@@ -521,6 +521,8 @@ _.extend(ElasticSearch.prototype, {
       throw new Error (msg);
     }
 
+    var doc_id = doc._id;
+
     if (config.fieldsToInclude) {
       if (!_.contains(config.fieldsToInclude, "_id")) {
         config.fieldsToInclude.push("_id");
@@ -532,7 +534,7 @@ _.extend(ElasticSearch.prototype, {
         return memo
       }, {});
     }
-    
+
     if (config.fieldsToExclude) {
       doc = _.filter(doc, function (value, key) {
         return !_.contains(config.fieldsToExclude, key);
@@ -543,7 +545,7 @@ _.extend(ElasticSearch.prototype, {
     self.EsClient.index({
       index: config.index,
       type: config.type,
-      id: doc._id,
+      id: doc_id,
       body: doc
     });
 
@@ -592,6 +594,7 @@ _.extend(ElasticSearch.prototype, {
       msg = "[ElasticSearch.update] Error: Missing `doc._id`";
       throw new Error (msg);
     }
+    var doc_id = doc._id;
 
     if (config.fieldsToInclude) {
       if (!_.contains(config.fieldsToInclude, "_id")) {
@@ -612,7 +615,7 @@ _.extend(ElasticSearch.prototype, {
     self.EsClient.update({
       index: config.index,
       type: config.type,
-      id: doc._id,
+      id: doc.doc_id,
       body: {
         doc: doc
       }
