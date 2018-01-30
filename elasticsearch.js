@@ -541,6 +541,8 @@ _.extend(ElasticSearch.prototype, {
       });
     }
 
+    delete doc._id;
+
     // create a document in Elastic Search
     self.EsClient.index({
       index: config.index,
@@ -611,6 +613,7 @@ _.extend(ElasticSearch.prototype, {
       });
     }
 
+    delete doc._id;
     // create a document in Elastic Search
     self.EsClient.update({
       index: config.index,

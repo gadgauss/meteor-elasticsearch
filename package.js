@@ -1,6 +1,6 @@
 Package.describe({
   name: 'hahihula:elasticsearch',
-  version: '0.0.5',
+  version: '0.0.7',
   summary: 'Wraps the ElasticSearch NPM package and provides helper functions.',
   git: 'https://github.com/gadgauss/meteor-elasticsearch.git',
   documentation: 'README.md'
