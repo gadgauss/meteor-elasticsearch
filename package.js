@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Npm.depends({
-  "elasticsearch": "10.1.2"
+  "elasticsearch": "14.0.0"
 });
 
 Package.onUse(function(api) {

@@ -532,6 +532,12 @@ _.extend(ElasticSearch.prototype, {
         return memo
       }, {});
     }
+    
+    if (config.fieldsToExclude) {
+      doc = _.filter(doc, function (value, key) {
+        return !_.contains(config.fieldsToExclude, key);
+      });
+    }
 
     // create a document in Elastic Search
     self.EsClient.index({
@@ -593,6 +599,12 @@ _.extend(ElasticSearch.prototype, {
       }
       doc = _.filter(doc, function (value, key) {
         return _.contains(config.fieldsToInclude, key);
+      });
+    }
+
+    if (config.fieldsToExclude) {
+      doc = _.filter(doc, function (value, key) {
+        return !_.contains(config.fieldsToExclude, key);
       });
     }
 
